@@ -1,0 +1,341 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+# ======================
+# 代理节点 (需自行添加)
+# ======================
+proxies:
+# 示例节点：
+# - name: "香港-01"
+#   type: vmess
+#   server: hk.example.com
+#   port: 443
+#   uuid: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+#   alterId: 0
+#   cipher: auto
+#   tls: true
+#   skip-cert-verify: true
+proxy-providers: {奇异之旅: {benchmark-url: 'http://www.gstatic.com/generate_204', interval: 86400, url: 'https://rss1.rssbook.xyz/api/v1/client/subscribe?token=971575b4bc875aca5c8b366ae8c9b22b'}} # 可在此处添加订阅链接
+# ======================
+# 策略组配置
+# ======================
+proxy-groups:
+  # 域名策略组
+  - name: 👽 AI1
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 👽 AI2
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 📘 GitHub
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 👯‍♂️ TikTok
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 🙋 Telegram
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 📀 流媒体
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: ➡️ 国内
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  - name: 🌍 国外
+    type: select
+    proxies:
+      - DIRECT
+      - 所有-自动
+      - 港台日新韩-自动
+      - 台日新韩-自动
+      - 香港-自动
+      - 台湾-自动
+      - 日本-自动
+      - 新加坡-自动
+      - 韩国-自动
+      - 美国-自动
+      - 其他-自动
+      - REJECT
+  # 节点自动选择组
+  - name: 所有-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: ".*"
+    include-all: true
+  - name: 港台日新韩-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广港|广台|广日|广新|广韩|广美|香港|HK|Hong Kong|🇭🇰|HongKong|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)"
+    use:
+      - 奇异之旅
+  - name: 台日新韩-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广台|广日|广新|广韩|广美|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)"
+    use:
+      - 奇异之旅
+  - name: 香港-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广港|香港|HK|Hong Kong|🇭🇰|HongKong)"
+    use:
+      - 奇异之旅
+  - name: 台湾-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)"
+    use:
+      - 奇异之旅
+  - name: 日本-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)"
+    use:
+      - 奇异之旅
+  - name: 新加坡-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)"
+    use:
+      - 奇异之旅
+  - name: 韩国-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)"
+    use:
+      - 奇异之旅
+  - name: 美国-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(广美|美|US|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|硅谷|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)"
+    use:
+      - 奇异之旅
+  - name: 其他-自动
+    type: url-test
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 5
+    filter: "(波|柬|尼|也|克|比|尔|立|冰|秘|耳|利|埃|希|孟|芬|愛|澳|英|德|南|意|法|拿|墨|印|越|俄|瑞|智|荷|比|巴|沙|班|泰|德|烏|以|Australia|Konghwaguk)"
+    use:
+      - 奇异之旅
+# ======================
+# 规则集配置
+# ======================
+rule-providers:
+  AI1:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/AI.list"
+    path: ./ruleset/AI1.yaml
+    interval: 86400
+    format: text
+  AI2:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/AI2.list"
+    path: ./ruleset/AI2.yaml
+    interval: 86400
+    format: text
+  GitHub:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.list"
+    path: ./ruleset/GitHub.yaml
+    interval: 86400
+    format: text
+  TikTok:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.list"
+    path: ./ruleset/TikTok.yaml
+    interval: 86400
+    format: text
+  Telegram:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list"
+    path: ./ruleset/Telegram.yaml
+    interval: 86400
+    format: text
+  YouTube:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list"
+    path: ./ruleset/YouTube.yaml
+    interval: 86400
+    format: text
+  HBO:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.list"
+    path: ./ruleset/HBO.yaml
+    interval: 86400
+    format: text
+  Disney:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.list"
+    path: ./ruleset/Disney.yaml
+    interval: 86400
+    format: text
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list"
+    path: ./ruleset/Netflix.yaml
+    interval: 86400
+    format: text
+  Spotify:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.list"
+    path: ./ruleset/Spotify.yaml
+    interval: 86400
+    format: text
+  Direct:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/liandu2024/clash/main/list/Direct.list"
+    path: ./ruleset/Direct.yaml
+    interval: 86400
+    format: text
+  ChinaMax:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax.list"
+    path: ./ruleset/ChinaMax.yaml
+    interval: 86400
+    format: text
+  China:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China.list"
+    path: ./ruleset/China.yaml
+    interval: 86400
+    format: text
+# ======================
+# 规则加载顺序
+# ======================
+rules:
+  - RULE-SET,AI1,👽 AI1
+  - RULE-SET,AI2,👽 AI2
+  - RULE-SET,GitHub,📘 GitHub
+  - RULE-SET,TikTok,👯‍♂️ TikTok
+  - RULE-SET,Telegram,🙋 Telegram
+  - RULE-SET,YouTube,📀 流媒体
+  - RULE-SET,HBO,📀 流媒体
+  - RULE-SET,Disney,📀 流媒体
+  - RULE-SET,Netflix,📀 流媒体
+  - RULE-SET,Spotify,📀 流媒体
+  - RULE-SET,Direct,➡️ 国内
+  - RULE-SET,ChinaMax,➡️ 国内
+  - RULE-SET,China,➡️ 国内
+  - MATCH,🌍 国外
+dns: {}
+subscribe-url: https://rss1.rssbook.xyz/api/v1/client/subscribe?token=971575b4bc875aca5c8b366ae8c9b22b
