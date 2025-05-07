@@ -18,7 +18,7 @@ proxies:
 #   cipher: auto
 #   tls: true
 #   skip-cert-verify: true
-proxy-providers: {奇异之旅: {benchmark-url: 'http://www.gstatic.com/generate_204', interval: 86400, url: 'https://rss1.rssbook.xyz/api/v1/client/subscribe?token=971575b4bc875aca5c8b366ae8c9b22b'}} # 可在此处添加订阅链接
+proxy-providers: {奇异之旅: {benchmark-url: 'http://www.gstatic.com/generate_204', interval: 86400, url: '订阅链接'}} # 可在此处添加订阅链接
 # ======================
 # 策略组配置
 # ======================
