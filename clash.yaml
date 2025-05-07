@@ -18,7 +18,7 @@ proxies:
 #   cipher: auto
 #   tls: true
 #   skip-cert-verify: true
-proxy-providers: {奇异之旅: {benchmark-url: 'http://www.gstatic.com/generate_204', interval: 86400, url: 'https://rss1.rssbook.xyz/api/v1/client/subscribe?token=971575b4bc875aca5c8b366ae8c9b22b'}} # 可在此处添加订阅链接
+proxy-providers: {奇异之旅: {benchmark-url: 'http://www.gstatic.com/generate_204', interval: 86400, url: '订阅链接'}} # 可在此处添加订阅链接
 # ======================
 # 策略组配置
 # ======================
@@ -319,6 +319,13 @@ rule-providers:
     path: ./ruleset/China.yaml
     interval: 86400
     format: text
+  Lan:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml"
+    path: ./ruleset/China.yaml
+    interval: 86400
+    format: yaml
 # ======================
 # 规则加载顺序
 # ======================
@@ -336,6 +343,7 @@ rules:
   - RULE-SET,Direct,➡️ 国内
   - RULE-SET,ChinaMax,➡️ 国内
   - RULE-SET,China,➡️ 国内
+  - RULE-SET,Lan,➡️ 国内
   - MATCH,🌍 国外
 dns: {}
 subscribe-url: https://rss1.rssbook.xyz/api/v1/client/subscribe?token=971575b4bc875aca5c8b366ae8c9b22b
